@@ -2,51 +2,54 @@
 A lightwieght package for doing fuzzy matches with a simple query language
 
 
-## functions
+## Docs:
 
 **notes:**
-1) If any value in `skip` is `in` a result, that result will be skipped.
-2) `flags` can be 1 or more characters representing the flag(s) you want to activate.
 
-### finditer:
-> yield all matches of a single query.
-
-`finditer(text:str, query:str, skip:list|tuple, flags:str)`
-| arg      | description             |
-| -------- | ----------------------- |
-| `text`   | the text to search      |
-| `query`  | the query to search for |
-| `skip`   | iterable of terms and/or characters that trigger a skip when found in results |
-| `flags`  | str of regex flags      |
-
-________
-
-### findany:
-> `OR` queries together and yield whatever matched.
-
-`findany(text:str, queries:list|tuple, skip:list|tuple, flags:str)`
-| arg       | description                                                                   |
-| --------- | ----------------------------------------------------------------------------- |
-| `text`    | the text to search                                                            |
-| `queries` | iterable of queries to search for                                             |
-| `skip`    | iterable of terms and/or characters that trigger a skip when found in results |
-| `flags`   | str of regex flags                                                            |
+1) `Iter` is an alias of `list|tuple|set`. It only exists in this documentation as a means to illustrate types in a less complex way.
+2) `skip` (if used) should be an `Iter` of words and/or characters that trigger a skip when found in results to be yielded.
 
 --------
 
-### iterall:
-> yield all matches of multiple queries.
+### finditer
+> yield all matches of a single query.
 
-`iterall(text:str, queries:list|tuple, skip:list|tuple, flags:str)`
+**finditer(`text`:str, `query`:str, `skip`:Iter|None=None, `ci`:bool=False) -> Iterator**
+| arg      | description                                                                   |
+| -------- | ----------------------------------------------------------------------------- |
+| `text`   | the text to search                                                            |
+| `query`  | the query to search for                                                       |
+| `skip`   | iterable of terms and/or characters that trigger a skip when found in results |
+| `ci`     | case-insensitive matching                                                     |
+
+--------
+
+### findany
+> `OR` queries together and yield whatever matched.
+
+**findany(`text`:str, `queries`:Iter, `skip`:Iter|None=None, `ci`:bool=False) -> Iterator**
 | arg       | description                                                                   |
 | --------- | ----------------------------------------------------------------------------- |
 | `text`    | the text to search                                                            |
 | `queries` | iterable of queries to search for                                             |
 | `skip`    | iterable of terms and/or characters that trigger a skip when found in results |
-| `flags`   | str of regex flags                                                            |
+| `ci`      | case-insensitive matching                                                     |
+
+--------
+
+### iterall
+> yield all matches of multiple queries.
+
+**iterall(`text`:str, `queries`:Iter, `skip`:Iter|None=None, `ci`:bool=False) -> Iterator**
+| arg       | description                                                                   |
+| --------- | ----------------------------------------------------------------------------- |
+| `text`    | the text to search                                                            |
+| `queries` | iterable of queries to search for                                             |
+| `skip`    | iterable of terms and/or characters that trigger a skip when found in results |
+| `ci`      | case-insensitive matching                                                     |
 
 
-## queries
+## Queries:
 
 A token system is used to represent unknown/fuzzy data. The 3 types of tokens are:
 
