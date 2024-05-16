@@ -3,8 +3,10 @@ A lightwieght package for doing fuzzy matches with a simple query language
 
 
 ## functions
-If any value in `skip` is `in` a result, that result will be skipped.
-`flags` can be 1 or more characters representing the flag(s) you want to activate.
+
+**notes:**
+1) If any value in `skip` is `in` a result, that result will be skipped.
+2) `flags` can be 1 or more characters representing the flag(s) you want to activate.
 
 ### finditer:
 > yield all matches of a single query.
