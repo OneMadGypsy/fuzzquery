@@ -4,7 +4,7 @@ A lightwieght package for doing fuzzy matches with a simple query language
 
 ## functions
 
-### `finditer(text:str, query:str, skip:list|tuple, flags:str)`
+#### `finditer(text:str, query:str, skip:list|tuple, flags:str)`
 
 | arg      | description             |
 | -------- | ----------------------- |
@@ -15,7 +15,7 @@ A lightwieght package for doing fuzzy matches with a simple query language
 
 --------
 
-### `findany(text:str, queries:list|tuple, skip:list|tuple, flags:str)`
+#### `findany(text:str, queries:list|tuple, skip:list|tuple, flags:str)`
 
 | arg      | description             |
 | -------- | ----------------------- |
@@ -26,7 +26,7 @@ A lightwieght package for doing fuzzy matches with a simple query language
 
 --------
 
-### `iterall(text:str, queries:list|tuple, skip:list|tuple, flags:str)`
+#### `iterall(text:str, queries:list|tuple, skip:list|tuple, flags:str)`
 
 | arg      | description             |
 | -------- | ----------------------- |
@@ -39,8 +39,8 @@ A lightwieght package for doing fuzzy matches with a simple query language
 
 A token system is used to represent unknown/fuzzy data. The 3 types of tokens are:
 
-| token    | type       | description                           | example           | results                         |
-| -------- | ---------- | ------------------------------------- | ----------------- | ------------------------------- |
-| `"{x}"`  | suggestive | from 0 to x non-whitespace characters | `"home{5}"`       | `homeless, homestead, homeward` |
-| `"{!x}"` | strict     | exactly x non-whitespace characters   | `"{1}ward{!2}"`   | `warden, awarded`               |
-| `"{?}"`  | unknown    | 0 or more unknown words               | `"thou {?} kill"` | `thou shalt not kill`           |
+| token    | type    | description                           | example           | result-like                         |
+| -------- | ------- | ------------------------------------- | ----------------- | ------------------------------- |
+| `"{x}"`  | allowed | from 0 to x non-whitespace characters | `"home{5}"`       | `homeless, homestead, homeward` |
+| `"{!x}"` | strict  | exactly x non-whitespace characters   | `"{1}ward{!2}"`   | `warden, awarded`               |
+| `"{?}"`  | unknown | 0 or more unknown words               | `"thou {?} kill"` | `thou shalt not kill`           |
