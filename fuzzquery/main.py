@@ -5,37 +5,13 @@ __all__ = 'finditer', 'findany', 'iterall'
 
 REPL  = '`'                                  # character to represent substitution and deletion points
 TOKEN = regex.compile(r'\{(!{0,1}\d+|\?)\}') # for splitting on token guts
+FLAGS = regex.V1, regex.V1|regex.I           # case-sensitive, case-insensitive
 
 FORMAT = {# https://github.com/mrabarnett/mrab-regex?tab=readme-ov-file#approximate-fuzzy-matching-hg-issue-12-hg-issue-41-hg-issue-109
     '.':r'{{{over}i+1d+1s<={limit}:\S}}',    # suggestive range
     '!':r'{{{limit}<=s<={limit}:\S}}'   ,    # strict range
     '?':r'(\w+\W+)*?'                   ,}   # 0 or more unknown words 
-
-FLAGS  = {# lookup table for str to RegexFlag conversion
-    'a':regex.ASCII       , 
-    'f':regex.FULLCASE    , 
-    'i':regex.IGNORECASE  , 
-    'L':regex.LOCALE      , 
-    'm':regex.MULTILINE   , 
-    's':regex.DOTALL      , 
-    'u':regex.UNICODE     , 
-    'x':regex.VERBOSE     , 
-    'w':regex.WORD        ,
-    'b':regex.BESTMATCH   , 
-    'e':regex.ENHANCEMATCH, 
-    'p':regex.POSIX       , 
-    'r':regex.REVERSE     , 
-    '0':regex.VERSION0    , 
-    '1':regex.VERSION1    ,}
- 
-# convert str to flags
-def __str2flags(flags:str) -> regex.RegexFlag:
-    flags_ = regex.VERSION1 # default
     
-    for flag in filter(None, map(FLAGS.get, flags)):
-        flags_ |= flag
-        
-    return flags_
 
 # convert query to expression
 def __expr(query:str, group:bool=True) -> str:
@@ -71,12 +47,12 @@ def __expr(query:str, group:bool=True) -> str:
     `expr` : final regex pattern
     `text` : the text to be searched
     `skip` : Iterable of words and/or characters that trigger a skip when found in a result - DEFAULT: []
-    `flags`: a string of regex flag characters                                              - DEFAULT: regex.VERSION1
+    `ci`   : case insensitive matching                                                      - DEFAULT: False
 """      
-def __exec(expr:str, text:str, skip:None|list|tuple|set=None, flags:str='') -> Iterator:
+def __exec(expr:str, text:str, skip:None|list|tuple|set=None, ci:bool=False) -> Iterator:
     skip = skip or []
     
-    for match in regex.finditer(expr, text, flags=__str2flags(flags)):
+    for match in regex.finditer(expr, text, flags=FLAGS[ci]):
         result = match['result']
         
         # determine if result should be skipped
