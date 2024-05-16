@@ -29,7 +29,7 @@ Substitutions and deletions can only happen where sub/del characters are present
 --------
 
 #### `finditer`
-> yield all matches of a single query.
+> yield all (`span`, `match`) of a single query.
 
 **finditer(`text`:str, `query`:str, `skip`:Iter|None=None, `ci`:bool=False) -> Iterator**
 | arg      | description                                                                   |
@@ -42,7 +42,7 @@ Substitutions and deletions can only happen where sub/del characters are present
 --------
 
 #### `findany`
-> `OR` queries together and yield whatever matched.
+> `OR` queries together and yield all (`span`, `match`) of whatever matched.
 
 **findany(`text`:str, `queries`:Iter, `skip`:Iter|None=None, `ci`:bool=False) -> Iterator**
 | arg       | description                                                                   |
@@ -55,7 +55,7 @@ Substitutions and deletions can only happen where sub/del characters are present
 --------
 
 #### `iterall`
-> yield all matches of multiple queries.
+> yield all (`query`, `span`, `match`) of multiple queries.
 
 **iterall(`text`:str, `queries`:Iter, `skip`:Iter|None=None, `ci`:bool=False) -> Iterator**
 | arg       | description                                                                   |
@@ -75,3 +75,50 @@ A token system is used to represent unknown/fuzzy data. The 3 types of tokens ar
 | `{x}`  | allowed | 0 to `x` non-whitespace characters    | `"home{5}"`       | `home, homestead, homeward`     |
 | `{!x}` | strict  | exactly `x` non-whitespace characters | `"{1}ward{!2}"`   | `warden, awarded`               |
 | `{?}`  | unknown | 0 or more unknown words               | `"thou {?} kill"` | `thou shalt not kill`           |
+
+## Examples:
+
+```python3
+import fuzzquery as fq
+
+data = """ 
+I headed homeward to meet with the Wardens. 
+When I arrived, I was greeted by a homely man that told me the homestead was awarded 5 million dollars.
+We intend to use some of the homage to create a homeless ward. 
+The first piece of furniture will be my late-friend Homer's wardrobe.
+"""
+queries = ('hom{5} {?} wa{8}', 
+           'home{5}', 
+           '{1}ward{!2}{2}', 
+           'home{4} ward{4}')
+
+for query, span, match in fq.iterall(data, queries, ci=True):
+    if query: print(f'\n{query.upper()}')
+    print(f'  {match}')
+```
+
+#### output
+```none
+HOM{5} {?} WA{8}
+  homeward to meet with the Wardens
+  homely man that told me the homestead was
+  homage to create a homeless ward
+  Homer's wardrobe
+
+HOME{5}
+  homeward
+  homely
+  homestead
+  homeless
+  Homer's
+
+{1}WARD{!2}{2}
+  Wardens
+  awarded
+  wardrobe
+
+HOME{4} WARD{4}
+  homeward
+  homeless ward
+  Homer's wardrobe
+```
