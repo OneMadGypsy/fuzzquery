@@ -53,8 +53,8 @@ A lightwieght package for doing fuzzy matches with a simple query language
 
 A token system is used to represent unknown/fuzzy data. The 3 types of tokens are:
 
-| token    | type    | description                           | example           | result-like                     |
-| -------- | ------- | ------------------------------------- | ----------------- | ------------------------------- |
-| `"{x}"`  | allowed | 0 to `x` non-whitespace characters    | `"home{5}"`       | `home, homestead, homeward`     |
-| `"{!x}"` | strict  | exactly `x` non-whitespace characters | `"{1}ward{!2}"`   | `warden, awarded`               |
-| `"{?}"`  | unknown | 0 or more unknown words               | `"thou {?} kill"` | `thou shalt not kill`           |
+| token  | type    | description                           | example           | result-like                     |
+| ------ | ------- | ------------------------------------- | ----------------- | ------------------------------- |
+| `{x}`  | allowed | 0 to `x` non-whitespace characters    | `"home{5}"`       | `home, homestead, homeward`     |
+| `{!x}` | strict  | exactly `x` non-whitespace characters | `"{1}ward{!2}"`   | `warden, awarded`               |
+| `{?}`  | unknown | 0 or more unknown words               | `"thou {?} kill"` | `thou shalt not kill`           |
