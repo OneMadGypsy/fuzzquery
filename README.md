@@ -1,81 +1,67 @@
 # fuzzquery
-A lightweight package for fuzzy matching.
+A lightweight package for performing fuzzy string matching with a very simple token system.
 
 
 ## Installation:
 To install `fuzzquery` and it's `regex` dependency, open a terminal and input the following command: 
 ### `pip install fuzzquery`
 
-
-## Theory:
-The `regex` package has 3 fuzzy matching features:
-
-| type       | description                                       |
-| ---------- | ------------------------------------------------- |
-| insert     | 0 or more characters appear **before** your term  |
-| substitute | 0 or more characters are substituted in your term |
-| delete     | 0 or more characters are removed from your term   |
-
-This system completely ignores the native insertion model and creates it's own with substitution and deletion. This is because insertion is wholly uncontrollable. It is the only feature that allows characters where there never were any. My system reformats queries with substitution/deletion characters wherever a token is present. This means if you put a token before your term, it is functionally an insertion.
-
-
-## Documentation:
-
-**notes:**
-
-1) `Iter` is an alias of `list|tuple|set`. It only exists in this documentation as a means to illustrate types in a less complex way.
-2) `skip` (if used) should be an `Iter` of words and/or characters that cannot be `in` a result.
-
---------
-
-### finditer
-> yield all (`span`, `match`) of a single query.
-
-**finditer(`text`:str, `query`:str, `skip`:Iter|None=None, `ci`:bool=False) -> Iterator**
-| arg      | description                                                               |
-| -------- | ------------------------------------------------------------------------- |
-| `text`   | the text to search                                                        |
-| `query`  | the query to search for                                                   |
-| `skip`   | Iter of terms and/or characters that trigger a skip when found in results |
-| `ci`     | case-insensitive matching                                                 |
-
---------
-
-### findany
-> `OR` queries together and yield all (`span`, `match`) of whatever matched.
-
-**findany(`text`:str, `queries`:Iter, `skip`:Iter|None=None, `ci`:bool=False) -> Iterator**
-| arg       | description                                                               |
-| --------- | ------------------------------------------------------------------------- |
-| `text`    | the text to search                                                        |
-| `queries` | Iter of queries to search for                                             |
-| `skip`    | Iter of terms and/or characters that trigger a skip when found in results |
-| `ci`      | case-insensitive matching                                                 |
-
---------
-
-### iterall
-> yield all (`query`, `span`, `match`) of multiple queries.
-
-**iterall(`text`:str, `queries`:Iter, `skip`:Iter|None=None, `ci`:bool=False) -> Iterator**
-| arg       | description                                                               |
-| --------- | ------------------------------------------------------------------------- |
-| `text`    | the text to search                                                        |
-| `queries` | Iter of queries to search for                                             |
-| `skip`    | Iter of terms and/or characters that trigger a skip when found in results |
-| `ci`      | case-insensitive matching                                                 |
-
-
 ## Queries:
 
-A token system is used to represent unknown/fuzzy data. The 3 types of tokens are:
+Tokens are used to represent unknown/fuzzy data. The 3 types of tokens are:
 
 | token  | type    | description                           | example           | result-like                     |
 | ------ | ------- | ------------------------------------- | ----------------- | ------------------------------- |
-| `{x}`  | allowed | 0 to `x` non-whitespace characters    | `"home{5}"`       | `home, homestead, homeward`     |
+| `{x}`  | range   | 0 to `x` non-whitespace characters    | `"home{5}"`       | `home, homestead, homeward`     |
 | `{!x}` | strict  | exactly `x` non-whitespace characters | `"{1}ward{!2}"`   | `warden, awarded`               |
-| `{?}`  | unknown | 0 or more unknown words               | `"thou {?} kill"` | `thou shalt not kill`           |
+| `{?}`  | unknown | 0 or more unknown **words**           | `"thou {?} kill"` | `thou shalt not kill`           |
 
+__The `unknown` token must be segregated in the space between any 2 terms, exactly as illustrated in the above example.__
+
+--------
+
+## Documentation:
+
+**note:**
+`list|tuple|set` is aliased as `Iter` to simplify documentation. There is no `Iter` type in the `fuzzyquery` package.
+
+--------
+
+### finditer(text, query, skip, ci)
+> yield all (`span`, `match`) of a single query.
+
+| arg      | description                                                       | type       |
+| -------- | ----------------------------------------------------------------- | ---------- |
+| `text`   | the text to search                                                | str        |
+| `query`  | the query to search for                                           | str        |
+| `skip`   | terms and/or characters that trigger a skip when found in results | Iter\|None |
+| `ci`     | case-insensitive matching                                         | bool       |
+
+--------
+
+### findany(text, queries, skip, ci)
+> `OR` queries together and yield all (`span`, `match`) of "whatever-is-next".
+
+| arg       | description                                                       | type       |
+| --------- | ----------------------------------------------------------------- | ---------- |
+| `text`    | the text to search                                                | str        |
+| `queries` | queries to combine for "whatever-is-next" search                  | Iter       |
+| `skip`    | terms and/or characters that trigger a skip when found in results | Iter\|None |
+| `ci`      | case-insensitive matching                                         | bool       |
+
+--------
+
+### iterall(text, queries, skip, ci)
+> yield all (`query`, `span`, `match`) of multiple queries.
+
+| arg       | description                                                       | type       |
+| --------- | ----------------------------------------------------------------- | ---------- |
+| `text`    | the text to search                                                | str        |
+| `queries` | queries to search for                                             | Iter       |
+| `skip`    | terms and/or characters that trigger a skip when found in results | Iter\|None |
+| `ci`      | case-insensitive matching                                         | bool       |
+
+--------
 
 ## Examples:
 
