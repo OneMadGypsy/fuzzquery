@@ -26,7 +26,7 @@ __The `unknown` token must be segregated in the space between any 2 terms, exact
 ## Documentation:
 
 **note:**
-`list|tuple|set` is aliased as `Iter` to simplify documentation. There is no `Iter` type in the `fuzzyquery` package.
+`list|tuple|set` is aliased as `Iter` to simplify documentation. There is no `Iter` type in the `fuzzquery` package.
 
 --------
 
