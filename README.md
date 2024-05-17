@@ -1,13 +1,14 @@
 # fuzzquery
-A lightwieght package for doing fuzzy matches with a simple query language. This works by creating regular expressions for you that utilize the fuzzy matching features of the `regex` package, based on your query tokens. 
+A lightweight package for fuzzy matching.
 
 
 ## Installation:
 To install `fuzzquery` and it's `regex` dependency, open a terminal and input the following command: 
 ### `pip install fuzzquery`
 
+
 ## Theory:
-The regex package has 3 fuzzy matching features:
+The `regex` package has 3 fuzzy matching features:
 
 | type       | description                                       |
 | ---------- | ------------------------------------------------- |
@@ -15,14 +16,15 @@ The regex package has 3 fuzzy matching features:
 | substitute | 0 or more characters are substituted in your term |
 | delete     | 0 or more characters are removed from your term   |
 
-This system completely ignores the native insertion model and creates it's own with substitution and deletion. This is because insertion is wholly uncontrollable. It is the only feature that allows characters where there never were any. My system reformats queries with substitution/deletion characters wherever a token is present. This means if you put a token before your term, it is essentially a controllable insertion. The back-end system will view it as a substitution and/or deletion, but it is a sub/del before your term so, it is functionally an insertion. 
+This system completely ignores the native insertion model and creates it's own with substitution and deletion. This is because insertion is wholly uncontrollable. It is the only feature that allows characters where there never were any. My system reformats queries with substitution/deletion characters wherever a token is present. This means if you put a token before your term, it is functionally an insertion.
+
 
 ## Documentation:
 
 **notes:**
 
 1) `Iter` is an alias of `list|tuple|set`. It only exists in this documentation as a means to illustrate types in a less complex way.
-2) `skip` (if used) should be an `Iter` of words and/or characters that trigger a skip when found in results to be yielded.
+2) `skip` (if used) should be an `Iter` of words and/or characters that cannot be `in` a result.
 
 --------
 
@@ -30,12 +32,12 @@ This system completely ignores the native insertion model and creates it's own w
 > yield all (`span`, `match`) of a single query.
 
 **finditer(`text`:str, `query`:str, `skip`:Iter|None=None, `ci`:bool=False) -> Iterator**
-| arg      | description                                                                   |
-| -------- | ----------------------------------------------------------------------------- |
-| `text`   | the text to search                                                            |
-| `query`  | the query to search for                                                       |
-| `skip`   | iterable of terms and/or characters that trigger a skip when found in results |
-| `ci`     | case-insensitive matching                                                     |
+| arg      | description                                                               |
+| -------- | ------------------------------------------------------------------------- |
+| `text`   | the text to search                                                        |
+| `query`  | the query to search for                                                   |
+| `skip`   | Iter of terms and/or characters that trigger a skip when found in results |
+| `ci`     | case-insensitive matching                                                 |
 
 --------
 
@@ -43,12 +45,12 @@ This system completely ignores the native insertion model and creates it's own w
 > `OR` queries together and yield all (`span`, `match`) of whatever matched.
 
 **findany(`text`:str, `queries`:Iter, `skip`:Iter|None=None, `ci`:bool=False) -> Iterator**
-| arg       | description                                                                   |
-| --------- | ----------------------------------------------------------------------------- |
-| `text`    | the text to search                                                            |
-| `queries` | iterable of queries to search for                                             |
-| `skip`    | iterable of terms and/or characters that trigger a skip when found in results |
-| `ci`      | case-insensitive matching                                                     |
+| arg       | description                                                               |
+| --------- | ------------------------------------------------------------------------- |
+| `text`    | the text to search                                                        |
+| `queries` | Iter of queries to search for                                             |
+| `skip`    | Iter of terms and/or characters that trigger a skip when found in results |
+| `ci`      | case-insensitive matching                                                 |
 
 --------
 
@@ -56,12 +58,12 @@ This system completely ignores the native insertion model and creates it's own w
 > yield all (`query`, `span`, `match`) of multiple queries.
 
 **iterall(`text`:str, `queries`:Iter, `skip`:Iter|None=None, `ci`:bool=False) -> Iterator**
-| arg       | description                                                                   |
-| --------- | ----------------------------------------------------------------------------- |
-| `text`    | the text to search                                                            |
-| `queries` | iterable of queries to search for                                             |
-| `skip`    | iterable of terms and/or characters that trigger a skip when found in results |
-| `ci`      | case-insensitive matching                                                     |
+| arg       | description                                                               |
+| --------- | ------------------------------------------------------------------------- |
+| `text`    | the text to search                                                        |
+| `queries` | Iter of queries to search for                                             |
+| `skip`    | Iter of terms and/or characters that trigger a skip when found in results |
+| `ci`      | case-insensitive matching                                                 |
 
 
 ## Queries:
@@ -73,6 +75,7 @@ A token system is used to represent unknown/fuzzy data. The 3 types of tokens ar
 | `{x}`  | allowed | 0 to `x` non-whitespace characters    | `"home{5}"`       | `home, homestead, homeward`     |
 | `{!x}` | strict  | exactly `x` non-whitespace characters | `"{1}ward{!2}"`   | `warden, awarded`               |
 | `{?}`  | unknown | 0 or more unknown words               | `"thou {?} kill"` | `thou shalt not kill`           |
+
 
 ## Examples:
 
@@ -124,6 +127,8 @@ HOME{4} WARD{4}
 --------
 
 ```python3
+import fuzzquery as fq
+
 data = """ 
 I would classify music as one of my favorite hobbies. 
 I love classical music played by classy musicians for a classic musical. 
