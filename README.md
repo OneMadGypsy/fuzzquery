@@ -1,10 +1,13 @@
 # fuzzquery
 A lightweight package for performing fuzzy string matching with a very simple token system.
 
+--------
 
 ## Installation:
 To install `fuzzquery` and it's `regex` dependency, open a terminal and input the following command: 
 ### `pip install fuzzquery`
+
+--------
 
 ## Queries:
 
