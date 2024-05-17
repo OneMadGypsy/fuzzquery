@@ -124,8 +124,6 @@ HOME{4} WARD{4}
 --------
 
 ```python3
-import fuzzquery as fq
-
 data = """ 
 I would classify music as one of my favorite hobbies. 
 I love classical music played by classy musicians for a classic musical. 
@@ -133,16 +131,28 @@ Beethoven can not be out-classed, music-wise - a man of class, musically gifted.
 """
 query = 'class{4} music{4}'
 
-print(f'\n{query.upper()}')
-for span, match in fq.finditer(data, query, ('classify', ','), True):
+print(f'\n{query.upper()} with skip')
+for span, match in fq.finditer(data, query, skip=('classify', ','), ci=True):
+    print(f'  {match}')
+    
+print(f'\n{query.upper()} no skip')
+for span, match in fq.finditer(data, query, ci=True):
     print(f'  {match}')
 ```
 
 #### output
 
 ```none
-CLASS{4} MUSIC{4}
+CLASS{4} MUSIC{4} with skip
   classical music
   classy musicians
   classic musical
+
+CLASS{4} MUSIC{4} no skip
+  classify music
+  classical music
+  classy musicians
+  classic musical
+  classed, music
+  class, musically
 ```
