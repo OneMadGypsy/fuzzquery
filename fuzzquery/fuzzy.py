@@ -11,7 +11,6 @@ FORMAT = {# https://github.com/mrabarnett/mrab-regex?tab=readme-ov-file#approxim
     '.':r'{{{over}i+1d+1s<={limit}:\S}}',    # allowed range of mixed substitutions and deletions
     '!':r'{{{limit}<=s<={limit}:\S}}'   ,    # strict amount of substitutions only
     '?':r'([\w\W]+?(?=\s))*?'           ,}   # 0 or more unknown words 
-    
 
 # convert query to expression
 def __expr(query:str, group:bool=True) -> str:
