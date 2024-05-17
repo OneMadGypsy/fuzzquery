@@ -26,7 +26,7 @@ This system completely ignores the native insertion model and creates it's own w
 
 --------
 
-#### `finditer`
+#### finditer
 > yield all (`span`, `match`) of a single query.
 
 **finditer(`text`:str, `query`:str, `skip`:Iter|None=None, `ci`:bool=False) -> Iterator**
@@ -39,7 +39,7 @@ This system completely ignores the native insertion model and creates it's own w
 
 --------
 
-#### `findany`
+#### findany
 > `OR` queries together and yield all (`span`, `match`) of whatever matched.
 
 **findany(`text`:str, `queries`:Iter, `skip`:Iter|None=None, `ci`:bool=False) -> Iterator**
@@ -52,7 +52,7 @@ This system completely ignores the native insertion model and creates it's own w
 
 --------
 
-#### `iterall`
+#### iterall
 > yield all (`query`, `span`, `match`) of multiple queries.
 
 **iterall(`text`:str, `queries`:Iter, `skip`:Iter|None=None, `ci`:bool=False) -> Iterator**
