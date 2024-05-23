@@ -1,5 +1,5 @@
 # fuzzquery
-A lightweight package for performing fuzzy string matching with a very simple token system.
+A lightweight package for fuzzy word/phrase searches in a body of text, using a very simple token system.
 
 --------
 
