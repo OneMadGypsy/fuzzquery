@@ -16,7 +16,9 @@ To install ``fuzzquery`` and it's ``regex`` depencency, open a terminal and inpu
 Tokens
 ------
 
-Tokens are used to represent unknown/fuzzy data. The 3 types of tokens are:
+Tokens are used to represent unknown/fuzzy data. Where a token is placed determines where a substitution, substitution & deletion or joining words may appear in the query.
+The ``joining`` token must be placed in the space between terms. The ``range`` and ``strict`` tokens can be placed anywhere. 
+The ``range`` and ``strict`` tokens capture `non-whitespace` characters. ``joining`` tokens capture 0 or more unknown terms between known terms.
   
 +--------+---------+---------------------------------------+------------------+--------------------------------+
 | token  | type    | description                           | example          | result-like                    |
@@ -25,7 +27,7 @@ Tokens are used to represent unknown/fuzzy data. The 3 types of tokens are:
 +--------+---------+---------------------------------------+------------------+--------------------------------+
 | "{!x}" | strict  | exactly x non-whitespace characters   | "{1}ward{!2}"    | warden, awarded                |
 +--------+---------+---------------------------------------+------------------+--------------------------------+
-| "{?}"  | unknown | 0 or more unknown **words**           | "thou {?} kill"  | thou shalt not kill            |
+| "{?}"  | joining | 0 or more unknown joining terms       | "thou {?} kill"  | thou shalt not kill            |
 +--------+---------+---------------------------------------+------------------+--------------------------------+
 
 .. _interface:
