@@ -14,8 +14,8 @@ Definitions
 ``term``
   A group of consecutive, non-whitespace characters with word boundaries
 ``query``
-  1 or more ``terms`` separated by whitespace
+  One or more ``terms`` separated by whitespace
 ``span``
-  a tuple of slice coordinates for the current match
+  A tuple of slice coordinates for the current match
 ``match``
-  the text that was matched
+  The text that was matched
