@@ -3,10 +3,12 @@ API
 **note:**
   ``list|tuple|set`` is aliased as ``Iter`` to simplify documentation. There is no ``Iter`` type in the ``fuzzquery`` package.
 
-|  
+----------
+
+finditer
+--------
 
 finditer(text, query, skip=None, ci=False) -> Iterator
-------------------------------------------------------
   
   yield all (``span``, ``match``) of a single query.
   
@@ -22,10 +24,12 @@ finditer(text, query, skip=None, ci=False) -> Iterator
 |*ci*      | case-insensitive matching                                         | ``bool``       |
 +----------+-------------------------------------------------------------------+----------------+
 
-|  
+------------------
+
+findall
+-------
 
 findall(text, queries, skip=None, ci=False) -> Iterator
-------------------------------------------------------
   
   ``OR`` queries together and yield all (``span``, ``match``) of "whatever-is-next".
   
@@ -40,11 +44,13 @@ findall(text, queries, skip=None, ci=False) -> Iterator
 +-----------+-------------------------------------------------------------------+----------------+
 |*ci*       | case-insensitive matching                                         | ``bool``       |
 +-----------+-------------------------------------------------------------------+----------------+
-	  
-|  
+
+---------------
+
+iiterall
+-------
 
 iterall(text, queries, skip=None, ci=False) -> Iterator
-------------------------------------------------------
   
   yield all (``query``, ``span``, ``match``) of multiple queries.
   
