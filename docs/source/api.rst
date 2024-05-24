@@ -4,6 +4,13 @@ API
 
   ``list|tuple|set`` is aliased as ``Iter`` to simplify documentation. There is no ``Iter`` type in the ``fuzzquery`` package.
 
+Definitions
+-----------
+
+:query: a singular query string
+:span: a tuple of slice coordinates for the match
+:match: the text that was matched
+
 ----------
 
 finditer
