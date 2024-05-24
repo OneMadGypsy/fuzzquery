@@ -44,4 +44,4 @@ This leaves us with ``substitution`` and ``deletion``. #1 allows for both, which
 #2 only allows for ``substitutions`` with a total that equal the limit, which gives us the behavior for the **strict** token. 
 
 Using a strict or range token is to imply\:
-  "Create a string of replacement characters **x** long, and apply **these** rules to it."
+  "Create a string of replacement characters ``x`` long, and apply **these** rules to it."
