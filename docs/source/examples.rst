@@ -25,18 +25,18 @@ finditer
 
 .. code-block:: console
 
-  CLASS{4} MUSIC{5} using skip
-    classical music
-    classy musicians
-    classic musical
-
-  CLASS{4} MUSIC{5} no skip
+  CLASS{4} MUSIC{5}
     classify music
     classical music
     classy musicians
     classic musical
     classed, music-wise
     class, musically
+
+  CLASS{4} MUSIC{5} with skip
+    classical music
+    classy musicians
+    classic musical
 
 iterall
 --------
