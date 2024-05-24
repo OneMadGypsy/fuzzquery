@@ -30,9 +30,9 @@ finditer
 findall
 -------
 
+  ``OR`` queries together and yield all (``span``, ``match``) of "whatever-is-next".
+
 ``findall(text, queries, skip=None, ci=False) -> Iterator``
-  
-``OR`` queries together and yield all (``span``, ``match``) of "whatever-is-next".
   
 +-----------+-------------------------------------------------------------------+--------------+
 | arg       | description                                                       | type         |
@@ -51,9 +51,9 @@ findall
 iterall
 -------
 
+  yield all (``query``, ``span``, ``match``) of multiple queries.
+
 ``iterall(text, queries, skip=None, ci=False) -> Iterator``
-  
-yield all (``query``, ``span``, ``match``) of multiple queries.
   
 +-----------+-------------------------------------------------------------------+--------------+
 | arg       | description                                                       | type         |
