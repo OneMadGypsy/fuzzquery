@@ -4,15 +4,15 @@ API
 **fuzzquery** consists of 3 generator functions for performing searches.
 
 finditer -> Iterator
-  yields all matches of 1 query from beginning to end of search string 
+  yields all matches of 1 query
 findall -> Iterator
-  joins an ``Iter`` of queries by `OR`, and yields consecutive matches from begining to end of search string
+  joins an ``Iter`` of queries by `OR`, and yields consecutive matches
 iterall -> Iterator
   loops over an  ``Iter`` of queries, calling ``finditer`` on them, and yielding all results
 
 .. note::
 
-  ``Iter`` is an alias of ``list|tuple|set`` to simplify this documentation. There is no ``Iter`` of-any-kind in the ``fuzzquery`` package.
+  To simplify this documentation, ``Iter`` is being used as an alias of ``list|tuple|set``. There is no explicit reference to ``Iter`` in the ``fuzzquery`` package.
 
 
 Definitions
