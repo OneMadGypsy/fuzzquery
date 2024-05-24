@@ -57,8 +57,9 @@ This leaves us with ``substitution`` and ``deletion``. This is how both are mana
 .. note::
 
   Using a limiting token implies:
-    | "Create a string ``x`` replacement characters long, at this token's position,
-    |  and require or allow ``x`` approximations."
+    | "Create a string ``x`` replacement characters long, 
+    | at this token's position,
+    | and require or allow ``x`` approximations."
 
 Joining Token
 -------------
