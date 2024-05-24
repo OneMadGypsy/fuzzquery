@@ -12,7 +12,6 @@ author = 'OysterShucker'
 release = '24.5.25'
 
 # -- General configuration
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
     'sphinx.ext.duration',
@@ -28,12 +27,11 @@ intersphinx_mapping = {
 }
 intersphinx_disabled_domains = ['std']
 
+templates_path = ['_templates']
+
 # -- Options for HTML output
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = 'sphinx_rtd_theme'
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
-exclude_patterns = []
-
