@@ -39,13 +39,13 @@ Theory
 The ``regex`` package has a few `approximation <https://github.com/mrabarnett/mrab-regex#approximate-fuzzy-matching-hg-issue-12-hg-issue-41-hg-issue-109>`_ expressions.
 The approximations are made by `insertion`, `substitution` and `deletion`. All 3 of those are managed in 2 ways:
 
-  1. you assign a score to each and provide a `limit` for their combined ``total`
-  2. you explicitly state which ones are allowed and provide a `limit` for their individual ``total``
+  1. you assign a score to each and provide a ``limit`` for their combined ``total``
+  2. you explicitly state which ones are allowed and provide a ``limit`` for their individual ``total``
 
 Since ``insertion`` is the only behavior that allows characters to be injected, ``insertions`` are explicitly and implicitly forbidden. 
 From the list above, this is what happens to ``insertion``:
 
-  1. given a score higher than the `limit`
+  1. given a score higher than the ``limit``
   2. never explicitly stated as being allowed
 
 This leaves us with ``substitution`` and ``deletion``. 
