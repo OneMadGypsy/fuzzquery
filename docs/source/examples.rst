@@ -23,6 +23,7 @@ finditer
   for span, match in fq.finditer(data, query, skip=('classify', ','), ci=True):
       print(f'  {match}')
 
+**output:**
 .. code-block:: console
 
   CLASS{4} MUSIC{5}
@@ -60,6 +61,7 @@ iterall
       if query: print(f'\n{query.upper()}')
       print(f'  {match}')
 
+**output:**
 .. code-block:: console
 
   HOME{5}
