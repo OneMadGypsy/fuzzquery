@@ -12,11 +12,8 @@ iterall -> Iterator
 
 .. note::
 
-  To simplify this documentation, ``Iter`` is being used as an alias of ``list|tuple|set``. There is no explicit reference to ``Iter`` in the ``fuzzquery`` package.
-
-.. note::
-
-  A version of this documentation can also be viewed via python's built-in ``help`` function.
+  *) A version of this documentation can also be viewed via python's built-in ``help`` function.
+  *) To simplify this documentation, ``Iter`` is being used as an alias of ``list|tuple|set``. There is no explicit reference to ``Iter`` in the ``fuzzquery`` package.
 
 Definitions
 -----------
