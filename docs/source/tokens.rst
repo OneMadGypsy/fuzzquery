@@ -38,10 +38,16 @@ The approximations are made by `insertion`, `substitution` and `deletion`. All 3
   1. you assign a score to each and provide a limit for their combined min/max instances
   2. you explicitly state which ones are allowed and provide a limit for their individual min/max instances
 
-Since ``insertion`` is the only behavior that allows characters to be injected, **fuzzquery** expressions, explicitly and implicitly, forbid ``insertions``. 
-In the case of #1 (above), ``insertion`` is given a score higher than the limit. For #2 it is never explicitly stated as being allowed.
-This leaves us with ``substitution`` and ``deletion``. #1 allows for both, which gives us the behavior for the **range** token. 
-#2 only allows for ``substitutions`` with a total that equal the limit, which gives us the behavior for the **strict** token. 
+Since ``insertion`` is the only behavior that allows characters to be injected, ``insertions`` are explicitly and implicitly forbidden. 
+From the list above, this is what happens to ``insertion``:
 
-Using a strict or range token is to imply\:
+  1. given a score higher than the max limit
+  2. never explicitly stated as being allowed
+
+This leaves us with ``substitution`` and ``deletion``. 
+
+  1. **range** : allows for both
+  2. **strict** : only allows for ``substitutions`` with a total that equal the limit
+
+Using a strict or range token is to imply :
   "Create a string of replacement characters ``x`` long, and apply **these** rules to it."
