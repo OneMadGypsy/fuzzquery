@@ -30,7 +30,7 @@ match
 finditer
 --------
 
-  yield all (``span``, ``match``) of a single query.
+  Yield all (``span``, ``match``) of a single query.
 
 +----------+-------------------------------------------------------------------+--------------+
 | arg      | description                                                       | type         |
@@ -56,7 +56,7 @@ finditer
 findall
 -------
 
-  `OR` queries together and yield all (``span``, ``match``) of "whatever-is-next".
+  Join queries with `OR`, and yield all (``span``, ``match``) of "whatever-is-next".
 
 +-----------+-------------------------------------------------------------------+--------------+
 | arg       | description                                                       | type         |
@@ -82,7 +82,7 @@ findall
 iterall
 -------
 
-  yield all (``query``, ``span``, ``match``) of 1 or more queries. ``query`` is always ``None`` except on it's first match. This is your indicator that a new query is being processed.
+  Yield all (``query``, ``span``, ``match``) of 1 or more queries. ``query`` is always ``None`` except on it's first match. This is your indicator that a new query is being processed.
   
 +-----------+-------------------------------------------------------------------+--------------+
 | arg       | description                                                       | type         |
