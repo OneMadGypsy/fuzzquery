@@ -58,7 +58,7 @@ finditer
 findall
 -------
 
-  Join queries with `OR`, and yield all (``span``, ``match``) of "whatever-is-next".
+  Join queries by `OR`, and yield all (``span``, ``match``) of "whatever-is-next".
 
 +-----------+-------------------------------------------------------------------+--------------+
 | arg       | description                                                       | type         |
