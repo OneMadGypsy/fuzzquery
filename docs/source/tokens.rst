@@ -9,7 +9,7 @@ Definitions
 -----------
 
 insertion
-  Placing a character between existing adjacent characters
+  Injecting a character between existing adjacent characters
 substitution
   Replacing a character with a different character
 deletion
@@ -17,7 +17,9 @@ deletion
 total
   The number of times an approximation was made or the combined score of those approximations
 limit
-  The maximum number of allowed approximations. Also referred to as ``x``
+  The maximum number of allowed approximations. Also referred to as ``x``.
+term
+  a group of consecutive, non-whitespace characters
 
 Overview
 --------
@@ -54,10 +56,10 @@ This leaves us with ``substitution`` and ``deletion``:
 
 .. note::
 
-  Using a limiting token is to imply:
+  Using a limiting token implies:
     "Create a string ``x`` replacement characters long, and require or allow ``x`` approximations."
 
 Joining Token
 -------------
 
-The ``joining`` token doesn't use any approximations. It gets everything between 2 terms, if there is anything to get. It does not currently accept a ``limit``, but I intend to change that in the next build.
+The ``joining`` token doesn't use any approximations. It gets all unknowen ``term`` instances between 2 known ``terms``. It does not currently accept a ``limit``.
