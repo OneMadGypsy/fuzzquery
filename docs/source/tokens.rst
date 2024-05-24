@@ -9,15 +9,15 @@ Definitions
 -----------
 
 insertion
-  placing a character between existing adjacent characters
+  Placing a character between existing adjacent characters
 substitution
-  replacing a character with a different character
+  Replacing a character with a different character
 deletion
-  removing a character
+  Removing a character
 total
-  the number of times an approximation was made
+  The number of times an approximation was made or the combined score of those approximations
 limit
-  the maximum number of allowed approximations
+  The maximum number of allowed approximations. Also referred to as ``x``
 
 Overview
 --------
@@ -57,3 +57,5 @@ This leaves us with ``substitution`` and ``deletion``:
 
   Using a strict or range token is to imply:
     "Create a string ``x`` replacement characters long, and require or allow ``x`` approximations."
+
+The ``joining`` token doesn't use any approximations. It gets everything between 2 terms, if there is anything to get. It does not currently accept a ``limit``, but I intend to change that in the next build.
