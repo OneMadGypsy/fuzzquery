@@ -19,7 +19,7 @@ total
 limit
   The maximum number of allowed approximations. Also referred to as ``x``.
 term
-  a group of consecutive, non-whitespace characters
+  A group of consecutive, non-whitespace characters with word boundaries
 
 Overview
 --------
@@ -31,7 +31,7 @@ Overview
 +--------+---------+---------------------------------------+------------------+--------------------------------+
 | "{!x}" | strict  | exactly x non-whitespace characters   | "{2}ward{!2}"    | warden, awarded, rewarded      |
 +--------+---------+---------------------------------------+------------------+--------------------------------+
-| "{?}"  | joining | 0 or more unknown joining terms       | "thou {?} kill"  | thou shalt not kill            |
+| "{?}"  | joining | 0 or more unknown joining ``terms``   | "thou {?} kill"  | thou shalt not kill            |
 +--------+---------+---------------------------------------+------------------+--------------------------------+
 
 Limiting Tokens
@@ -62,4 +62,4 @@ This leaves us with ``substitution`` and ``deletion``:
 Joining Token
 -------------
 
-The **joining** token doesn't use any approximations. It gets all unknowen ``term`` instances between 2 known ``terms``. It does not currently accept a ``limit``.
+The **joining** token doesn't use any approximations. It gets all unknown ``term`` instances between 2 known ``terms``. It does not currently accept a ``limit``.
