@@ -1,21 +1,21 @@
 Definitions
 -----------
 
-insertion
+``insertion``
   Injecting a character between existing adjacent characters
-substitution
+``substitution``
   Replacing a character with a different character
-deletion
+``deletion``
   Removing a character
-total
+``total``
   The number of times an approximation was made or the combined score of those approximations
-limit
+``limit``
   The maximum number of allowed approximations. Also referred to as ``x``.
-term
+``term``
   A group of consecutive, non-whitespace characters with word boundaries
-query
+``query``
   1 or more ``terms`` separated by whitespace
-span
+``span``
   a tuple of slice coordinates for the current match
-match
+``match``
   the text that was matched
