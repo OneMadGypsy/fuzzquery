@@ -16,9 +16,9 @@ To install ``fuzzquery`` and it's ``regex`` depencency, open a terminal and inpu
 Tokens
 ------
 
-Tokens are used to represent unknown/fuzzy data. Where a token is placed determines where a substitution, substitution & deletion or joining words may appear in the query.
-The ``joining`` token must be placed in the space between terms. The ``range`` and ``strict`` tokens can be placed anywhere. 
-The ``range`` and ``strict`` tokens capture `non-whitespace` characters. ``joining`` tokens capture 0 or more unknown terms between known terms.
+Tokens are used to represent unknown/fuzzy data. A token's placement determines where a substitution, substitution & deletion or joining words may appear in the query.
+The ``joining`` token must be placed in the space between terms. The ``range`` & ``strict`` tokens capture `non-whitespace` characters, and can be placed anywhere. 
+The ``joining`` token captures 0 or more unknown terms between known terms, and must be placed in the space between any 2 terms.
   
 +--------+---------+---------------------------------------+------------------+--------------------------------+
 | token  | type    | description                           | example          | result-like                    |
