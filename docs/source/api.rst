@@ -15,16 +15,6 @@ findall -> Iterator
 iterall -> Iterator
   loops over an  ``Iter`` of queries, calling ``finditer`` on them, and yielding all results
 
-Definitions
------------
-
-query
-  a singular query string
-span
-  a tuple of slice coordinates for the current match
-match
-  the text that was matched
-
 ----------
 
 finditer
