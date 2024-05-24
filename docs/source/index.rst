@@ -1,7 +1,7 @@
 fuzzquery
 =========
 
-**fuzzquery** is a lightweight package for fuzzy word/phrase searches in a body of text. A token system is used to represent unknown/fuzzy data.
+**fuzzquery** is a lightweight package for fuzzy word/phrase searches in a body of text. A simple token system manages the number and type of approximations that can be made.
 
 Installation
 ------------
@@ -20,3 +20,10 @@ Contents
    tokens
    api
    examples
+
+Links
+-----
+
+- `fuzzquery github <https://github.com/OneMadGypsy/fuzzquery/>`
+- `fuzzquery pypi <https://pypi.org/project/fuzzquery/>`
+- `regex pypi <https://pypi.org/project/regex/>`
