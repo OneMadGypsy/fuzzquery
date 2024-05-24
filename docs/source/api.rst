@@ -1,6 +1,16 @@
 API
 ========
 
+**fuzzquery** consists of 3 ``Iterators`` for performing searches.
+
+finditer
+  yields all matches of 1 query from beginning to end of search string 
+findall
+  yields consecutive matches of 2 or more queries that have been joined by `OR`, from beginning to end of search string 
+iterall
+  loops over an iterable of queries, calling ``finditer`` on them, and yielding all matches from beginning to end of search string, for each query
+
+
 Definitions
 -----------
 
