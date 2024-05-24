@@ -10,8 +10,6 @@ finditer
 --------
 
   yield all (``span``, ``match``) of a single query.
-  
-``finditer(text, query, skip=None, ci=False) -> Iterator``
 
 +----------+-------------------------------------------------------------------+--------------+
 | arg      | description                                                       | type         |
@@ -22,8 +20,15 @@ finditer
 +----------+-------------------------------------------------------------------+--------------+
 |*skip*    | terms and/or characters that trigger a skip when found in results | `Iter|None`  |
 +----------+-------------------------------------------------------------------+--------------+
-|*ci*      | case-insensitive matching                                         | `bool`       |
+|*ci*      | case-insensitive matching  (default: False)                       | `bool`       |
 +----------+-------------------------------------------------------------------+--------------+
+
+.. code-block:: python
+
+  import fuzzquery as fq
+
+  for span, match in fq.finditer(text, query, skip=None, ci=False):
+      ...
 
 ------------------
 
@@ -32,8 +37,6 @@ findall
 
   ``OR`` queries together and yield all (``span``, ``match``) of "whatever-is-next".
 
-``findall(text, queries, skip=None, ci=False) -> Iterator``
-  
 +-----------+-------------------------------------------------------------------+--------------+
 | arg       | description                                                       | type         |
 +===========+===================================================================+==============+
@@ -43,8 +46,15 @@ findall
 +-----------+-------------------------------------------------------------------+--------------+
 |*skip*     | terms and/or characters that trigger a skip when found in results | `Iter|None`  |
 +-----------+-------------------------------------------------------------------+--------------+
-|*ci*       | case-insensitive matching                                         | `bool`       |
+|*ci*       | case-insensitive matching  (default: False)                       | `bool`       |
 +-----------+-------------------------------------------------------------------+--------------+
+
+.. code-block:: python
+
+  import fuzzquery as fq
+
+  for span, match in fq.findall(text, queries, skip=None, ci=False):
+      ...
 
 ---------------
 
@@ -52,8 +62,6 @@ iterall
 -------
 
   yield all (``query``, ``span``, ``match``) of multiple queries.
-
-``iterall(text, queries, skip=None, ci=False) -> Iterator``
   
 +-----------+-------------------------------------------------------------------+--------------+
 | arg       | description                                                       | type         |
@@ -64,5 +72,14 @@ iterall
 +-----------+-------------------------------------------------------------------+--------------+
 |*skip*     | terms and/or characters that trigger a skip when found in results | `Iter|None`  |
 +-----------+-------------------------------------------------------------------+--------------+
-|*ci*       | case-insensitive matching                                         | `bool`       |
+|*ci*       | case-insensitive matching  (default: False)                       | `bool`       |
 +-----------+-------------------------------------------------------------------+--------------+
+
+.. code-block:: python
+
+  import fuzzquery as fq
+
+  for query, span, match in fq.iterall(text, queries, skip=None, ci=False):
+      if query:
+          # first match for this query, else None
+          print(query)
