@@ -39,19 +39,19 @@ Theory
 The ``regex`` package has a few `approximation <https://github.com/mrabarnett/mrab-regex#approximate-fuzzy-matching-hg-issue-12-hg-issue-41-hg-issue-109>`_ expressions.
 The approximations are made by `insertion`, `substitution` and `deletion`. All 3 of those are managed in 2 ways:
 
-  1. you assign a score to each and provide a ``limit`` for their combined ``total``
-  2. you explicitly state which ones are allowed and provide a ``limit`` for their individual ``total``
+  :range: you assign a score to each and provide a ``limit`` for their combined ``total``
+  :strict: you explicitly state which ones are allowed and provide a ``limit`` for their individual ``total``
 
 Since ``insertion`` is the only behavior that allows characters to be injected, ``insertions`` are explicitly and implicitly forbidden. 
-From the list above, this is what happens to ``insertion``:
+This is how ``insertion`` is managed:
 
-  1. given a score higher than the ``limit``
-  2. never explicitly stated as being allowed
+  :range: given a score higher than the ``limit``
+  :strict: never explicitly stated as being allowed
 
-This leaves us with ``substitution`` and ``deletion``. Matching the items in the uppermost list - this is how tokens are managed:
+This leaves us with ``substitution`` and ``deletion``:
 
-  1. **range** : allows for ``substitution`` and ``deletion`` if ``0 <= total <= limit``
-  2. **strict** : allows for ``substitutions`` only, and ``total`` must equal ``limit``
+  :range: allows for ``substitution`` and ``deletion`` if ``0 <= total <= limit``
+  :strict: allows for ``substitutions`` only, and ``total`` must equal ``limit``
 
 .. note::
 
