@@ -40,7 +40,7 @@ The ``regex`` package has a few `approximation <https://github.com/mrabarnett/mr
 The approximations are made by `insertion`, `substitution` and `deletion`. All 3 of those are managed in 2 ways:
 
   :range: you assign a score to each and provide a ``limit`` for their combined ``total``
-  :strict: you explicitly state which ones are allowed and provide a ``limit`` for their individual ``total``
+  :strict: you explicitly state which are allowed and provide ``limits`` for their individual ``total``
 
 Since ``insertion`` is the only behavior that allows characters to be injected, ``insertions`` are explicitly and implicitly forbidden. 
 This is how ``insertion`` is managed:
