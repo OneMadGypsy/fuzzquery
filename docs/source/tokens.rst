@@ -39,10 +39,10 @@ Limiting Tokens
 
 .. note::
 
-  Using a limiting token implies:
+  **Using a limiting token implies:**
 
     - create a string ``x`` replacement characters long, at this token's position
-    - require or allow ``x`` approximations
+    - require or allow ``x`` approximations on the replacement characters
 
 The ``regex`` package has a few `approximation <https://github.com/mrabarnett/mrab-regex#approximate-fuzzy-matching-hg-issue-12-hg-issue-41-hg-issue-109>`_ expressions.
 The approximations are made by `insertion`, `substitution` and `deletion`. All 3 of those are managable in 2 ways:
