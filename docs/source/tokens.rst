@@ -62,4 +62,4 @@ This leaves us with ``substitution`` and ``deletion``:
 Joining Token
 -------------
 
-The ``joining`` token doesn't use any approximations. It gets all unknowen ``term`` instances between 2 known ``terms``. It does not currently accept a ``limit``.
+The **joining** token doesn't use any approximations. It gets all unknowen ``term`` instances between 2 known ``terms``. It does not currently accept a ``limit``.
