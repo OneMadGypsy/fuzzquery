@@ -53,7 +53,7 @@ This leaves us with ``substitution`` and ``deletion``. Matching the items in the
   1. **range** : allows for ``substitution`` and ``deletion`` if ``0 <= total <= limit``
   2. **strict** : allows for ``substitutions`` only, and ``total`` must equal ``limit``
 
-.. _note:
+.. note::
 
   Using a strict or range token is to imply:
     "Create a string of replacement characters with a length of ``x``, and allow/require a ``total`` of ``x`` approximations."
