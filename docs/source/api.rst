@@ -7,9 +7,12 @@ API
 Definitions
 -----------
 
-:query: a singular query string
-:span: a tuple of slice coordinates for the current match
-:match: the text that was matched
+query
+  a singular query string
+span
+  a tuple of slice coordinates for the current match
+match
+  the text that was matched
 
 ----------
 
