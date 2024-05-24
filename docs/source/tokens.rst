@@ -13,7 +13,15 @@ The ``joining`` token captures 0 or more unknown terms between known terms, and 
 +========+=========+=======================================+==================+================================+
 | "{x}"  | range   | 0 to x non-whitespace characters      | "home{5}"        | home, homestead, homeward      |
 +--------+---------+---------------------------------------+------------------+--------------------------------+
-| "{!x}" | strict  | exactly x non-whitespace characters   | "{1}ward{!2}"    | warden, awarded                |
+| "{!x}" | strict  | exactly x non-whitespace characters   | "{2}ward{!2}"    | warden, awarded, rewarded      |
 +--------+---------+---------------------------------------+------------------+--------------------------------+
 | "{?}"  | joining | 0 or more unknown joining terms       | "thou {?} kill"  | thou shalt not kill            |
 +--------+---------+---------------------------------------+------------------+--------------------------------+
+
+
+Theory
+------
+
+The ``regex`` package has a few `approximation`_. expressions.
+
+.. _regex_afm: https://github.com/mrabarnett/mrab-regex#approximate-fuzzy-matching-hg-issue-12-hg-issue-41-hg-issue-109
