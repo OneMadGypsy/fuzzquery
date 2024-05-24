@@ -1,6 +1,11 @@
 API
 ========
 
+.. note::
+
+  - A version of this documentation can also be viewed via python's built-in ``help`` function.
+  - To simplify this documentation, ``Iter`` is being used as an alias of ``list|tuple|set``. There is no explicit reference to ``Iter`` in the ``fuzzquery`` package.
+
 **fuzzquery** consists of 3 generator functions for performing searches.
 
 finditer -> Iterator
@@ -9,11 +14,6 @@ findall -> Iterator
   joins an ``Iter`` of queries by `OR`, and yields consecutive matches
 iterall -> Iterator
   loops over an  ``Iter`` of queries, calling ``finditer`` on them, and yielding all results
-
-.. note::
-
-  - A version of this documentation can also be viewed via python's built-in ``help`` function.
-  - To simplify this documentation, ``Iter`` is being used as an alias of ``list|tuple|set``. There is no explicit reference to ``Iter`` in the ``fuzzquery`` package.
 
 Definitions
 -----------
