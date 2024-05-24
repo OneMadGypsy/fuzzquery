@@ -1,8 +1,5 @@
 API
 ========
-.. note::
-
-  ``list|tuple|set`` is aliased as ``Iter`` to simplify documentation. There is no ``Iter`` type in the ``fuzzquery`` package.
 
 Definitions
 -----------
@@ -13,6 +10,10 @@ span
   a tuple of slice coordinates for the current match
 match
   the text that was matched
+
+.. note::
+
+  ``list|tuple|set`` is aliased as ``Iter`` to simplify documentation. There is no ``Iter`` type in the ``fuzzquery`` package.
 
 ----------
 
