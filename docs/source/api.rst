@@ -9,10 +9,9 @@ API
 finditer
 --------
 
+  yield all (``span``, ``match``) of a single query.
+  
 ``finditer(text, query, skip=None, ci=False) -> Iterator``
-  
-yield all (``span``, ``match``) of a single query.
-  
 +----------+-------------------------------------------------------------------+--------------+
 | arg      | description                                                       | type         |
 +==========+===================================================================+==============+
