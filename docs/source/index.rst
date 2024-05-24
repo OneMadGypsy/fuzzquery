@@ -8,7 +8,9 @@ Installation
 
 To install ``fuzzquery`` and it's ``regex`` depencency, open a terminal and input:
 
-``pip install fuzzquery``
+.. code-block:: console
+
+  pip install fuzzquery
 
 
 Tokens
