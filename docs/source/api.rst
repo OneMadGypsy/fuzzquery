@@ -16,7 +16,7 @@ Definitions
 finditer
 --------
 
-  ``yield`` all (``span``, ``match``) of a single query.
+  yield all (``span``, ``match``) of a single query.
 
 +----------+-------------------------------------------------------------------+--------------+
 | arg      | description                                                       | type         |
@@ -42,7 +42,7 @@ finditer
 findall
 -------
 
-  ``OR`` queries together and ``yield`` all (``span``, ``match``) of "whatever-is-next".
+  `OR` queries together and yield all (``span``, ``match``) of "whatever-is-next".
 
 +-----------+-------------------------------------------------------------------+--------------+
 | arg       | description                                                       | type         |
@@ -68,7 +68,8 @@ findall
 iterall
 -------
 
-  ``yield`` all (``query``, ``span``, ``match``) of 1 or more queries. ``query`` is always ``None`` except on it's first match.
+  | yield all (``query``, ``span``, ``match``) of 1 or more queries. 
+  | ``query`` is always ``None`` except on it's first match.
   
 +-----------+-------------------------------------------------------------------+--------------+
 | arg       | description                                                       | type         |
