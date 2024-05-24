@@ -48,6 +48,8 @@ finditer
 
   import fuzzquery as fq
 
+  ...
+
   for span, match in fq.finditer(text, query, skip=None, ci=False):
       ...
 
@@ -74,6 +76,8 @@ findall
 
   import fuzzquery as fq
 
+  ...
+
   for span, match in fq.findall(text, queries, skip=None, ci=False):
       ...
 
@@ -99,6 +103,8 @@ iterall
 .. code-block:: python
 
   import fuzzquery as fq
+
+  ...
 
   for query, span, match in fq.iterall(text, queries, skip=None, ci=False):
       if query:
