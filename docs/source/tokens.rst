@@ -54,4 +54,5 @@ This leaves us with ``substitution`` and ``deletion``. Matching the items in the
   2. **strict** : allows for ``substitutions`` only, and ``total`` must equal ``limit``
 
 Using a strict or range token is to imply:
-  > "Create a string of replacement characters with a length of ``x``, and apply **these** rules to it, with a ``limit`` or ``total`` of ``x``."
+  
+  "Create a string of replacement characters with a length of ``x``, and apply **these** rules to it, with a ``limit`` or ``total`` of ``x``."
