@@ -1,6 +1,16 @@
 Tokens
 ======
 
+Definitions
+-----------
+
+insertion
+  placing a character between existing adjacent characters
+substitution
+  replacing a character with a different character
+deletion
+  removing a character
+
 Overview
 --------
 
@@ -23,3 +33,7 @@ Theory
 ------
 
 The ``regex`` package has a few `approximation <https://github.com/mrabarnett/mrab-regex#approximate-fuzzy-matching-hg-issue-12-hg-issue-41-hg-issue-109>`_ expressions.
+The approximations are made by `insertion`, `substitution` and `deletion`. All 3 of those are managed in 2 ways:
+
+  1. you explicitly state which ones are allowed and their individual maximum instances
+  2. you assign a score to each and limit their combined maximum instances
