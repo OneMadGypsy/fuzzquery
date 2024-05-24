@@ -47,7 +47,7 @@ findall(text, queries, skip=None, ci=False) -> Iterator
 
 ---------------
 
-iiterall
+iterall
 -------
 
 iterall(text, queries, skip=None, ci=False) -> Iterator
