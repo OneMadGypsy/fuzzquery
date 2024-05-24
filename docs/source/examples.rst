@@ -15,12 +15,12 @@ finditer
   """
   query = 'class{4} music{5}'
 
-  print(f'\n{query.upper()} using skip')
-  for span, match in fq.finditer(data, query, skip=('classify', ','), ci=True):
-      print(f'  {match}')
-    
-  print(f'\n{query.upper()} no skip')
+  print(f'\n{query.upper()}')
   for span, match in fq.finditer(data, query, ci=True):
+      print(f'  {match}')
+
+  print(f'\n{query.upper()} with skip')
+  for span, match in fq.finditer(data, query, skip=('classify', ','), ci=True):
       print(f'  {match}')
 
 .. code-block:: console
