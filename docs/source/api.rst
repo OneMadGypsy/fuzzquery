@@ -1,6 +1,6 @@
 API
 ========
-**note:**
+.. note::
   ``list|tuple|set`` is aliased as ``Iter`` to simplify documentation. There is no ``Iter`` type in the ``fuzzquery`` package.
 
 ----------
