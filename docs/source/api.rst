@@ -50,6 +50,7 @@ finditer
 
   ...
 
+  # skip and ci are shown as their default value
   for span, match in fq.finditer(text, query, skip=None, ci=False):
       ...
 
@@ -78,6 +79,7 @@ findall
 
   ...
 
+  # skip and ci are shown as their default value
   for span, match in fq.findall(text, queries, skip=None, ci=False):
       ...
 
@@ -106,6 +108,7 @@ iterall
 
   ...
 
+  # skip and ci are shown as their default value
   for query, span, match in fq.iterall(text, queries, skip=None, ci=False):
       if query:
           # first match for this query, else None
