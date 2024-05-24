@@ -24,6 +24,7 @@ finditer
       print(f'  {match}')
 
 **output:**
+
 .. code-block:: console
 
   CLASS{4} MUSIC{5}
@@ -62,6 +63,7 @@ iterall
       print(f'  {match}')
 
 **output:**
+
 .. code-block:: console
 
   HOME{5}
