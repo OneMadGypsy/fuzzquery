@@ -22,6 +22,6 @@ The ``joining`` token captures 0 or more unknown terms between known terms, and 
 Theory
 ------
 
-The ``regex`` package has a few `approximation`_. expressions.
+The ``regex`` package has a few `approximation`__. expressions.
 
 .. _regex_afm: https://github.com/mrabarnett/mrab-regex#approximate-fuzzy-matching-hg-issue-12-hg-issue-41-hg-issue-109
