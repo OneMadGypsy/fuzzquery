@@ -1,11 +1,15 @@
 fuzzquery documentation
 =======================
 
-**fuzzquery** is a lightweight package for fuzzy word/phrase searches in a body of text. A token_system_. is used to represent unknown/fuzzy data.
-changed
+**fuzzquery** is a lightweight package for fuzzy word/phrase searches in a body of text. A token system is used to represent unknown/fuzzy data.
 
+Installation
+------------
 
-.. _token_system:
+To install ``fuzzquery`` and it's ``regex`` depencency, open a terminal and input:
+
+``pip install fuzzquery``
+
 
 Tokens
 ------
@@ -26,8 +30,8 @@ Tokens are used to represent unknown/fuzzy data. The 3 types of tokens are:
 
 Interface
 ---------
-  **note:**
-    ``list|tuple|set`` is aliased as ``Iter`` to simplify documentation. There is no ``Iter`` type in the ``fuzzquery`` package.
+**note:**
+  ``list|tuple|set`` is aliased as ``Iter`` to simplify documentation. There is no ``Iter`` type in the ``fuzzquery`` package.
 
 |  
 
@@ -83,3 +87,25 @@ Interface
 |*ci*       | case-insensitive matching                                         | ``bool``       |
 +-----------+-------------------------------------------------------------------+----------------+
  
+
+Examples
+--------
+
+.. code-block:: console
+
+  import fuzzquery as fq
+  
+  data = """ 
+  I headed homeward to meet with the Wardens. 
+  When I arrived, I was greeted by a homely man that told me the homestead was awarded 5 million dollars.
+  We intend to use some of the homage to create a homeless ward. 
+  The first piece of furniture will be my late-friend Homer's wardrobe.
+  """
+  queries = ('hom{5} {?} wa{!1}{5}', 
+             'home{5}', 
+             '{1}ward{!2}{2}', 
+             'home{4} ward{4}')
+  
+  for query, span, match in fq.iterall(data, queries, ci=True):
+      if query: print(f'\n{query.upper()}')
+      print(f'  {match}')
