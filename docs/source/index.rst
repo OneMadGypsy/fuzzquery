@@ -2,6 +2,7 @@ fuzzquery documentation
 =======================
 
 **fuzzquery** is a lightweight package for fuzzy word/phrase searches in a body of text. A token_system_. is used to represent unknown/fuzzy data.
+changed
 
 
 .. _token_system:
