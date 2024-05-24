@@ -1,12 +1,12 @@
-fuzzquery
-=========
+fuzzquery 24.5.26
+=================
 
-**fuzzquery** is a lightweight package for fuzzy word/phrase searches in a body of text. A simple token system manages the number and type of approximations that can be made.
+**fuzzquery** is a lightweight package for fuzzy word/phrase searches in a body of text. Tokens are used to determine the number and type of approximations that can be made at your query's token position.
 
 Installation
 ------------
 
-To install ``fuzzquery`` and it's ``regex`` depencency, open a terminal and input:
+To install ``fuzzquery`` and it's ``regex`` depencency, use hte following command-line:
 
 .. code-block:: console
 
