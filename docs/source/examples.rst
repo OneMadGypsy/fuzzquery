@@ -24,6 +24,7 @@ iterall
       print(f'  {match}')
 
 .. code-block:: console
+
   HOME{5}
     homeward
     homely
