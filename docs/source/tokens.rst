@@ -56,4 +56,4 @@ This leaves us with ``substitution`` and ``deletion``. Matching the items in the
 .. note::
 
   Using a strict or range token is to imply:
-    "Create a string ``x`` replacement characters long, and allow/require ``x`` approximations."
+    "Create a string ``x`` replacement characters long, and require or allow ``x`` approximations."
