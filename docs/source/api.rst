@@ -11,7 +11,7 @@ finditer
 
 ``finditer(text, query, skip=None, ci=False) -> Iterator``
   
-  yield all (``span``, ``match``) of a single query.
+yield all (``span``, ``match``) of a single query.
   
 +----------+-------------------------------------------------------------------+--------------+
 | arg      | description                                                       | type         |
@@ -32,7 +32,7 @@ findall
 
 ``findall(text, queries, skip=None, ci=False) -> Iterator``
   
-  ``OR`` queries together and yield all (``span``, ``match``) of "whatever-is-next".
+``OR`` queries together and yield all (``span``, ``match``) of "whatever-is-next".
   
 +-----------+-------------------------------------------------------------------+--------------+
 | arg       | description                                                       | type         |
@@ -53,7 +53,7 @@ iterall
 
 ``iterall(text, queries, skip=None, ci=False) -> Iterator``
   
-  yield all (``query``, ``span``, ``match``) of multiple queries.
+yield all (``query``, ``span``, ``match``) of multiple queries.
   
 +-----------+-------------------------------------------------------------------+--------------+
 | arg       | description                                                       | type         |
