@@ -48,10 +48,10 @@ From the list above, this is what happens to ``insertion``:
   1. given a score higher than the ``limit``
   2. never explicitly stated as being allowed
 
-This leaves us with ``substitution`` and ``deletion``. 
+This leaves us with ``substitution`` and ``deletion``. Matching the items in the uppermost list - this is how tokens are managed:
 
   1. **range** : allows for both if ``0 <= total <= limit``
   2. **strict** : allows for ``substitutions`` only, and ``total`` must equal ``limit``
 
 Using a strict or range token is to imply:
-  "Create a string of replacement characters with a length of ``x``, and apply **these** rules to it, with a ``limit`` or ``total`` of ``x``."
+  > "Create a string of replacement characters with a length of ``x``, and apply **these** rules to it, with a ``limit`` or ``total`` of ``x``."
