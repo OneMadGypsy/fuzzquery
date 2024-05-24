@@ -43,5 +43,5 @@ In the case of #1 (above), ``insertion`` is given a score higher than the limit.
 This leaves us with ``substitution`` and ``deletion``. #1 allows for both, which gives us the behavior for the **range** token. 
 #2 only allows for ``substitutions`` with a total that equal the limit, which gives us the behavior for the **strict** token. 
 
-Using a **strict** or **range** token is to imply:
-  "Create a string of replacement characters ``x`` long, and apply `these` rules to it."
+Using a strict or range token is to imply:
+  "Create a string of replacement characters **x** long, and apply **these** rules to it."
