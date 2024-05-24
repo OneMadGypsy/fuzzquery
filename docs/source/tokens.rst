@@ -38,26 +38,26 @@ Limiting Tokens
 ---------------
 
 The ``regex`` package has a few `approximation <https://github.com/mrabarnett/mrab-regex#approximate-fuzzy-matching-hg-issue-12-hg-issue-41-hg-issue-109>`_ expressions.
-The approximations are made by `insertion`, `substitution` and `deletion`. All 3 of those are managed in 2 ways:
+The approximations are made by `insertion`, `substitution` and `deletion`. All 3 of those are managable in 2 ways:
 
-  :range: you assign a score to each and provide a ``limit`` for their combined ``total``
-  :strict: you explicitly state which are allowed and provide ``limits`` for their individual ``total``
+  :range: assign a score to each and provide a ``limit`` for their combined ``total``
+  :strict: explicitly state which are allowed and provide ``limits`` for their individual ``total(s)``
 
 Since ``insertion`` is the only behavior that allows characters to be injected, ``insertions`` are explicitly and implicitly forbidden. 
-This is how ``insertion`` is managed:
+This is how ``insertion`` is managed in **fuzzquery**:
 
   :range: given a score higher than the ``limit``
   :strict: never explicitly stated as being allowed
 
-This leaves us with ``substitution`` and ``deletion``:
+This leaves us with ``substitution`` and ``deletion``. This is how both are managed in **fuzzquery**:
 
-  :range: allows for ``substitution`` and ``deletion`` if ``0 <= total <= limit``
+  :range: allows for ``substitution`` and ``deletion`` if ``total <= limit``
   :strict: allows for ``substitutions`` only, and ``total`` must equal ``limit``
 
 .. note::
 
   Using a limiting token implies:
-    "Create a string ``x`` replacement characters long, and require or allow ``x`` approximations."
+    "Create a string ``x`` replacement characters long, at this token's position, and require or allow ``x`` approximations."
 
 Joining Token
 -------------
