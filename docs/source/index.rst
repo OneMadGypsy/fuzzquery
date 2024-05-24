@@ -1,5 +1,5 @@
-fuzzquery documentation
-=======================
+fuzzquery
+=========
 
 **fuzzquery** is a lightweight package for fuzzy word/phrase searches in a body of text. A token system is used to represent unknown/fuzzy data.
 
