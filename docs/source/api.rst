@@ -71,8 +71,7 @@ findall
 iterall
 -------
 
-  | yield all (``query``, ``span``, ``match``) of 1 or more queries. 
-  | ``query`` is always ``None`` except on it's first match.
+  yield all (``query``, ``span``, ``match``) of 1 or more queries. ``query`` is always ``None`` except on it's first match. This is your indicator that a new query is being processed.
   
 +-----------+-------------------------------------------------------------------+--------------+
 | arg       | description                                                       | type         |
