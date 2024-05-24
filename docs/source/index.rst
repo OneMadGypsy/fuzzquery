@@ -91,7 +91,7 @@ Interface
 Examples
 --------
 
-.. code-block:: console
+.. code-block:: python
 
   import fuzzquery as fq
   
