@@ -32,36 +32,32 @@ Overview
 | "{?}"  | joining | 0 or more unknown joining terms       | "thou {?} kill"  | thou shalt not kill            |
 +--------+---------+---------------------------------------+------------------+--------------------------------+
 
+Limiting Tokens
+---------------
 
-Theory
-------
+The ``regex`` package has a few `approximation <https://github.com/mrabarnett/mrab-regex#approximate-fuzzy-matching-hg-issue-12-hg-issue-41-hg-issue-109>`_ expressions.
+The approximations are made by `insertion`, `substitution` and `deletion`. All 3 of those are managed in 2 ways:
 
-  Limiter Tokens
-  --------------
+  :range: you assign a score to each and provide a ``limit`` for their combined ``total``
+  :strict: you explicitly state which are allowed and provide ``limits`` for their individual ``total``
 
-  The ``regex`` package has a few `approximation <https://github.com/mrabarnett/mrab-regex#approximate-fuzzy-matching-hg-issue-12-hg-issue-41-hg-issue-109>`_ expressions.
-  The approximations are made by `insertion`, `substitution` and `deletion`. All 3 of those are managed in 2 ways:
+Since ``insertion`` is the only behavior that allows characters to be injected, ``insertions`` are explicitly and implicitly forbidden. 
+This is how ``insertion`` is managed:
 
-    :range: you assign a score to each and provide a ``limit`` for their combined ``total``
-    :strict: you explicitly state which are allowed and provide ``limits`` for their individual ``total``
+  :range: given a score higher than the ``limit``
+  :strict: never explicitly stated as being allowed
 
-  Since ``insertion`` is the only behavior that allows characters to be injected, ``insertions`` are explicitly and implicitly forbidden. 
-  This is how ``insertion`` is managed:
+This leaves us with ``substitution`` and ``deletion``:
 
-    :range: given a score higher than the ``limit``
-    :strict: never explicitly stated as being allowed
+  :range: allows for ``substitution`` and ``deletion`` if ``0 <= total <= limit``
+  :strict: allows for ``substitutions`` only, and ``total`` must equal ``limit``
 
-  This leaves us with ``substitution`` and ``deletion``:
+.. note::
 
-    :range: allows for ``substitution`` and ``deletion`` if ``0 <= total <= limit``
-    :strict: allows for ``substitutions`` only, and ``total`` must equal ``limit``
+  Using a limiting token is to imply:
+    "Create a string ``x`` replacement characters long, and require or allow ``x`` approximations."
 
-  .. note::
+Joining Token
+-------------
 
-    Using a strict or range token is to imply:
-      "Create a string ``x`` replacement characters long, and require or allow ``x`` approximations."
-
-  Joining Token
-  -------------
-  
-  The ``joining`` token doesn't use any approximations. It gets everything between 2 terms, if there is anything to get. It does not currently accept a ``limit``, but I intend to change that in the next build.
+The ``joining`` token doesn't use any approximations. It gets everything between 2 terms, if there is anything to get. It does not currently accept a ``limit``, but I intend to change that in the next build.
