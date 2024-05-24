@@ -5,22 +5,6 @@ Tokens are used to represent unknown/fuzzy data. A token's placement determines 
 The ``range`` & ``strict`` tokens capture `non-whitespace` characters, and can be placed anywhere. 
 The ``joining`` token captures 0 or more unknown terms between known terms, and must be placed in the space between any 2 terms.
 
-Definitions
------------
-
-insertion
-  Injecting a character between existing adjacent characters
-substitution
-  Replacing a character with a different character
-deletion
-  Removing a character
-total
-  The number of times an approximation was made or the combined score of those approximations
-limit
-  The maximum number of allowed approximations. Also referred to as ``x``.
-term
-  A group of consecutive, non-whitespace characters with word boundaries
-
 Overview
 --------
   
