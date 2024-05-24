@@ -24,6 +24,6 @@ Contents
 Links
 -----
 
-- `fuzzquery github <https://github.com/OneMadGypsy/fuzzquery/>`
-- `fuzzquery pypi <https://pypi.org/project/fuzzquery/>`
-- `regex pypi <https://pypi.org/project/regex/>`
+- `fuzzquery github <https://github.com/OneMadGypsy/fuzzquery/>`_
+- `fuzzquery pypi <https://pypi.org/project/fuzzquery/>`_
+- `regex pypi <https://pypi.org/project/regex/>`_
