@@ -1,7 +1,7 @@
 Tokens
 ======
 
-Tokens are used to represent unknown/fuzzy data. A token's placement determines where a substitution, substitution & deletion or joining words may appear in the query.
+Tokens are used to represent unknown/fuzzy data. A token's placement determines where a substitution, substitution & deletion or joining ``terms`` may appear in the ``query``.
 
 Overview
 --------
@@ -19,7 +19,7 @@ Overview
 Limiting Tokens
 ---------------
 
-The ``range`` & ``strict`` tokens capture `non-whitespace` characters, and can be placed anywhere in a query.
+The **range** & **strict** tokens are considered "limiting tokens". They capture `non-whitespace` characters, and can be placed anywhere in a query.
 
 .. note::
 
