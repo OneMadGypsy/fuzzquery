@@ -14,8 +14,9 @@ To install `fuzzquery` and it's `regex` dependency, use the following command-li
 
 Documentation
 -------------
+
+The official documents can be viewed at `readthedocs <https://fuzzquery.readthedocs.io/>`_.
 A version of documents can be viewed by calling python's built-in ``help`` function on any part of the **fuzzquery** package. 
-The official docs can be viewed at `readthedocs <https://fuzzquery.readthedocs.io/>`_.
 
 Examples
 ========
