@@ -6,7 +6,7 @@ fuzzquery 24.5.26
 Installation
 ------------
 
-To install ``fuzzquery`` and it's ``regex`` depencency, use hte following command-line:
+To install ``fuzzquery`` and it's ``regex`` depencency, use the following command-line:
 
 .. code-block:: console
 
