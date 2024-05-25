@@ -19,10 +19,10 @@ The official documents can be viewed at `readthedocs <https://fuzzquery.readthed
 A version of documents can be viewed by calling python's built-in ``help`` function on any part of the **fuzzquery** package. 
 
 Examples
-========
+--------
 
 finditer
---------
+++++++++
 
 .. code-block:: python
 
@@ -61,7 +61,7 @@ finditer
     classic musical
 
 iterall
---------
++++++++
 
 .. code-block:: python
 
