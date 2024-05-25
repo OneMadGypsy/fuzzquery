@@ -1,11 +1,14 @@
-# fuzzquery
+# fuzzquery 24.5.26
 A lightweight package for fuzzy word/phrase searches in a body of text, using a very simple token system.
 
 --------
 
 ## Installation:
-To install `fuzzquery` and it's `regex` dependency, open a terminal and input the following command: 
-### `pip install fuzzquery`
+To install `fuzzquery` and it's `regex` dependency, use the folloqing command-line: 
+
+``` console
+pip install fuzzquery
+```
 
 --------
 
