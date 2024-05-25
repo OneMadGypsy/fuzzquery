@@ -14,6 +14,6 @@ pip install fuzzquery
 
 Documentation
 -------------
-A version of documents can be viewed by calling python's built-in help function on any part of the **fuzzquery** package. The official docs can be viewed at [fuzzquery.readthedocs.io](https://fuzzquery.readthedocs.io/).
+A version of documents can be viewed by calling python's built-in help function on any part of the **fuzzquery** package. The official docs can be viewed at `fuzzquery.readthedocs.io <https://fuzzquery.readthedocs.io/>`_.
 
 
