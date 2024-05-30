@@ -87,24 +87,24 @@ iterall
 
 .. code-block:: console
 
-HOME{5}
-  homeward
-  homely
-  homestead
-  homeless
-  Homer's
-
-HOME{4} WARD{4}
-  homeless ward
-  Homer's wardrobe
-
-{1}WARD{=2}{2}
-  Wardens
-  awarded
-  wardrobe
-
-HOM{6} {4W} WA{=1}{5}
-  homeward to meet with the Wardens
-  homestead was
-  homage to create a homeless ward
-  Homer's wardrobe
+  HOME{5}
+    homeward
+    homely
+    homestead
+    homeless
+    Homer's
+  
+  HOME{4} WARD{4}
+    homeless ward
+    Homer's wardrobe
+  
+  {1}WARD{=2}{2}
+    Wardens
+    awarded
+    wardrobe
+  
+  HOM{6} {4W} WA{=1}{5}
+    homeward to meet with the Wardens
+    homestead was
+    homage to create a homeless ward
+    Homer's wardrobe
