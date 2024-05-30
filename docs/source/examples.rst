@@ -1,6 +1,10 @@
 Examples
 ========
 
+.. raw:: html
+
+    <iframe src="https://replit.com/@onemadgypsy/fuzzquery?embed=true" width="600" height="400"></iframe>
+
 finditer
 --------
 

@@ -9,7 +9,7 @@
 project = 'fuzzquery'
 copyright = '2024, OysterShucker'
 author = 'OysterShucker'
-release = '24.5.26'
+release = '24.5.28'
 
 # -- General configuration
 

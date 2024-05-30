@@ -2,59 +2,56 @@
 
 project: https://pypi.org/project/fuzzquery/
 
-version: 24.5.23
+version: 24.5.28
 
 author: OysterShucker
 
 tokens:
- - "{x}"  : from 0 to x non-whitespace characters
- - "{!x}" : exactly x non-whitespace characters
- - "{?}"  : 0 or more unknown words
+ tokens have up to 3 parts:
+ - "x" = a number of characters or words to find. this number by default is considered a range: 0 to `x`
+ - "=" = exactly `x`, instead of a range
+ - "w" = signifies the token should match words
+ 
+token examples:
+ - "{5}"  : from 0 to 5 non-whitespace characters
+ - "{=3}" : exactly 3 non-whitespace characters
+ - "{5w}" : 0 to 5 words
+ - "{=3w}": exactly 3 words
     
 query examples:
- - "home{5}"       : home, homer, homely, homeward, homestead
- - "bomb{!2}"      : bomber, bombed
- - "bomb{!2}{3}"   : bomber, bombed, bombers, bombastic
- - "thou {?} kill" : thou shalt not kill
- - "{2}ward{!2}"   : warden, awarded, rewarded
- * "{4}{!3}-{!4}"  : 504-525-5555, 867-5309, more-or-less
+ - "home{5}"         : home, homer, homely, homeward, homestead
+ - "bomb{=2}"        : bomber, bombed
+ - "bomb{=2}{3}"     : bomber, bombed, bombers, bombastic
+ - "thou {=2w} kill" : thou shalt not kill
+ - "{2}ward{=2}"     : warden, awarded, rewarded
+ * "{4}{=3}-{=4}"    : 504-525-5555, 867-5309, more-or-less
  
  * searches this broad are bound to return some unwanted results
 """
-import regex
+import re
 from typing import Iterator
 
 __all__ = 'finditer', 'findany', 'iterall'
 
-REPL  = '`'                                  # character to represent substitution and deletion points
-TOKEN = regex.compile(r'\{(!{0,1}\d+|\?)\}') # for splitting on token guts
-FLAGS = regex.V1, regex.V1|regex.I           # case-sensitive, case-insensitive
+FLAGS = None, re.I
+TOKEN = re.compile(r'(\{={0,1}\d+[cw]{0,1}\})')
 
-# https://github.com/mrabarnett/mrab-regex?tab=readme-ov-file#approximate-fuzzy-matching-hg-issue-12-hg-issue-41-hg-issue-109
-FORMAT = {
-    '.':r'{{{over}i+1d+1s<={limit}:\S}}',    # allowed range of mixed substitutions and deletions
-    '!':r'{{{limit}<=s<={limit}:\S}}'   ,    # strict amount of substitutions only
-    '?':r'([\w\W]+?(?=\s))*?'           ,}   # 0 or more unknown words 
-    
+FORMATS = {
+    'char' : r'(?:\S){{{start},{stop}}}',
+    'word' : r'(?:\S+?(?:\s+?|$)){{{start},{stop}}}',
+}
+
 # convert query to expression
 def __expr(query:str, group:bool=True) -> str:
 
     # convert term segment to expression
-    def subexpr(segment:str) -> str:
-        
-        # assume this is a token and get alleged integer range
-        limit = int(''.join(filter(str.isdigit, segment)) or 0)
-        
-        # alias some facts
-        d, t  = segment.isdigit(), segment[0]
-        
-        # if range or strict get replacement characters group
-        expr  = ('', fr'({REPL * limit})')[d | (t == '!')] 
-        
-        # append respective value and format compatible results with limits
-        expr += FORMAT.get((t, '.')[d], regex.escape(segment)).format(over=limit+1, limit=limit)
-        
-        return expr
+    def subexpr(segment:str, _start:int=0, _stop:int=0, _type:str='explicit') -> str:
+        if TOKEN.fullmatch(segment) is not None:
+            _type  = ('char', 'word')['w' in segment]
+            _stop  = int(''.join(filter(str.isdigit, segment)) or 0)
+            _start = _stop * ('=' in segment)
+
+        return FORMATS.get(_type, re.escape(segment)).format(start=_start, stop=_stop)
     
     # term segments
     segmap = filter(None, map(TOKEN.split, query.split(' ')))
@@ -63,7 +60,7 @@ def __expr(query:str, group:bool=True) -> str:
     terms = (r''.join(map(subexpr, filter(None, segments))) for segments in segmap)
     
     # join terms with conditional spacing
-    expr  = r'((?<=\s)|\s)+?'.join(terms)
+    expr  = r'(?:(?<=\s)|\s)+?'.join(terms)
     
     # create final expression
     return f'{"("*group}{expr}{")"*group}'
@@ -72,8 +69,8 @@ def __expr(query:str, group:bool=True) -> str:
 def __exec(expr:str, text:str, skip:None|list|tuple|set=None, ci:bool=False) -> Iterator:
     skip = skip or []
     
-    for match in regex.finditer(expr, text, flags=FLAGS[ci]):
-        result = match['result']
+    for match in re.finditer(expr, text, flags=FLAGS[ci]):
+        result = match.group('result')
         
         # determine if result should be skipped
         for item in skip:
@@ -98,7 +95,7 @@ def finditer(text:str, query:str, **kwargs) -> Iterator:
          
      return tuple of query results (`span`, `results`)
     """
-    expr = fr'\m(?P<result>{__expr(query, False)})\M'
+    expr = fr'\b(?P<result>{__expr(query, False)})\b'
     
     for span, result in __exec(expr, text, **kwargs):
         yield span, result
@@ -121,7 +118,7 @@ def findany(text:str, queries:list|tuple|set, **kwargs) -> Iterator:
      return tuple of query results (`span`, `results`)
     """
     expr = r'|'.join(map(__expr, queries))
-    expr = fr'\m(?P<result>{expr})\M'
+    expr = fr'\b(?P<result>{expr})\b'
     
     for span, result in __exec(expr, text, **kwargs):
         yield span, result
